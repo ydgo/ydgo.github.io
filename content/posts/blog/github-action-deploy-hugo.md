@@ -6,7 +6,9 @@ categories: ["Blog"]
 tags: [Hugo]
 ---
 
-本文主要记录了如何准确快速配置 Github Action 实现 Hugo 博客自动部署。
+记录如何使用 Hugo 和 Github Action 自动部署博客系统。
+
+<!--more-->
 
 ## 1. 生成网站文件
 ### 1.1 创建项目
