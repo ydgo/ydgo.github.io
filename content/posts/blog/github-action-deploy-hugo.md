@@ -1,7 +1,7 @@
 ---
 title: "基于 Github Action 自动构建 Hugo 博客"
 date: 2023-03-30T16:19:41+08:00
-draft: true
+draft: false
 categories: ["Blog"]
 tags: [Hugo]
 ---
