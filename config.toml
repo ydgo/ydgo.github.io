@@ -4,7 +4,7 @@ baseURL = "https://ydgo.github.io/"
 theme = "LoveIt"
 
 # 网站标题
-title = "我的全新 Hugo 网站"
+title = "斗宗强者"
 
 # 网站语言, 仅在这里 CN 大写 ["en", "zh-CN", "fr", "pl", ...]
 languageCode = "zh-CN"
@@ -13,11 +13,13 @@ languageName = "简体中文"
 # 是否包括中日韩文字
 hasCJKLanguage = true
 
+enableEmoji = true
+
 # 作者配置
 [author]
-  name = "xxxx"
-  email = ""
-  link = ""
+  name = "斗宗"
+  email = "yudongyyds@gmail.com"
+  link = "ydgo.github.com"
 
 # 菜单配置
 [menu]
@@ -56,4 +58,75 @@ hasCJKLanguage = true
     # false 是必要的设置 (https://github.com/dillonzq/LoveIt/issues/158)
     noClasses = false
 
+[param]
+    dateFormat = "2006-01-02"
+    title = "斗宗强者的纳戒"
+    description = "斗宗强者的个人空间"
+
+    # 主页配置
+    [params.home]
+        # LoveIt 新增 | 0.2.0 RSS 文章数目
+        rss = 10
+        # 主页个人信息
+        [params.home.profile]
+            enable = true
+            # Gravatar 邮箱，用于优先在主页显示的头像
+            gravatarEmail = ""
+            # 主页显示头像的 URL
+            # avatarURL = "/images/avatar.png"
+            # LoveIt 更改 | 0.2.7 主页显示的网站标题 (支持 HTML 格式)
+            title = "斗宗强者"
+            # 主页显示的网站副标题 (允许 HTML 格式)
+            subtitle = "斗宗强者，恐怖如斯"
+            # 是否为副标题显示打字机动画
+            typeit = true
+            # 是否显示社交账号
+            social = true
+            # LoveIt 新增 | 0.2.0 免责声明 (支持 HTML 格式)
+            disclaimer = ""
+            # 主页文章列表
+            [params.home.posts]
+                enable = true
+                # 主页每页显示文章数量
+                paginate = 6
+                # LoveIt 删除 | 0.2.0 被 params.page 中的 hiddenFromHomePage 替代
+                # 当你没有在文章前置参数中设置 "hiddenFromHomePage" 时的默认行为
+                defaultHiddenFromHomePage = false
+
+    [params.social]
+        GitHub = "ydgo"
+
+    [params.page]
+        # LoveIt 新增 | 0.2.0 是否在主页隐藏一篇文章
+        hiddenFromHomePage = false
+        # LoveIt 新增 | 0.2.0 是否在搜索结果中隐藏一篇文章
+        hiddenFromSearch = false
+        # LoveIt 新增 | 0.2.0 是否使用 twemoji
+        twemoji = false
+        # 是否使用 lightgallery
+        lightgallery = false
+        # LoveIt 新增 | 0.2.0 是否使用 ruby 扩展语法
+        ruby = true
+        # LoveIt 新增 | 0.2.0 是否使用 fraction 扩展语法
+        fraction = true
+        # LoveIt 新增 | 0.2.0 是否使用 fontawesome 扩展语法
+        fontawesome = true
+        # 是否在文章页面显示原始 Markdown 文档链接
+        linkToMarkdown = true
+        # LoveIt 新增 | 0.2.4 是否在 RSS 中显示全文内容
+        rssFullText = false
+        # LoveIt 新增 | 0.2.0 目录配置
+        [params.page.toc]
+            # 是否使用目录
+            enable = true
+            # LoveIt 新增 | 0.2.9 是否保持使用文章前面的静态目录
+            keepStatic = true
+            # 是否使侧边目录自动折叠展开
+            auto = true
+        # LoveIt 新增 | 0.2.0 代码配置
+        [params.page.code]
+            # 是否显示代码块的复制按钮
+            copy = true
+            # 默认展开显示的代码行数
+            maxShownLines = 50
 
