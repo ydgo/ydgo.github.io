@@ -93,7 +93,7 @@ hasCJKLanguage = true
     noClasses = false
 ```
 
-### 3. 创建 Github Actions 配置文件
+## 3. 创建 Github Actions 配置文件
 Github Actions 类似 Gitlab 的 CI/CD 功能，可以帮助我们自动构建、测试和部署项目。而且很多具体的 Action 都有专门的 Github 项目维护，我们
 的配置页来自于 Hugo 的 [技术文档](https://gohugo.io/hosting-and-deployment/hosting-on-github/) 。
 
@@ -180,12 +180,12 @@ jobs:
         uses: actions/deploy-pages@v2
 ```
 
-### 4. 将博客与远程仓库建立连接
+## 4. 将博客与远程仓库建立连接
 ```bash
 git remote add origin git@github.com:username.github.io.git
 ```
 
-### 5. 写博客，上传即自动部署
+## 5. 写博客，上传即自动部署
 ```bash
 hugo new posts/xxx.md
 git add .
