@@ -19,7 +19,7 @@ tags: [Hugo]
 ### 2.1 创建项目
 注意项目名称最好和仓库名一致。
 
-{{< admonition tip "username 请换成自己的 GitHub 用户名" false >}}
+{{<admonition>}} username 请换成自己的 GitHub 用户名。{{</admonition>}}
 ```bash
 hugo new site username.github.io
 ```
