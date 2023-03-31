@@ -10,18 +10,30 @@ tags: [Hugo]
 
 <!--more-->
 
-## 1. 生成网站文件
-### 1.1 创建项目
+## 1. 在 Github 上创建项目
+项目名称符合规范：`username.github.io`
+
+## 2. 使用 Hugo 在本地创建博客
+在 [Hugo](https://github.com/gohugoio/hugo/releases/tag/v0.111.3) 官网下载最新的版本（选扩展版本）
+
+### 2.1 创建项目
+注意项目名称最好和仓库名一致。
+
+{{< admonition tip "username 请换成自己的 GitHub 用户名" false >}}
 ```bash
-hugo new site ydgo.github.io
-cd site ydgo.github.io
+hugo new site username.github.io
+```
+### 2.2 安装主题
+主题有很多种，选一种你最喜欢的。
+```bash
+cd username.github.io
 git init
 git submodule add https://github.com/dillonzq/LoveIt.git themes/LoveIt
-hugo new posts/xxx.md
 ```
-### 1.2 编写配置文件
+### 2.3 配置项目
+配置参数可以去主题所在的 Github 项目进行了解。以下是 LoveIt 主题的基本配置：
 ```toml
-baseURL = "https://ydgo.github.io/"
+baseURL = "http://example.org/"
 
 # 更改使用 Hugo 构建网站时使用的默认主题
 theme = "LoveIt"
@@ -78,23 +90,14 @@ hasCJKLanguage = true
   [markup.highlight]
     # false 是必要的设置 (https://github.com/dillonzq/LoveIt/issues/158)
     noClasses = false
-
-
-
 ```
 
-## 2. 创建 Github 仓库
+### 3. 创建 Github Actions 配置文件
+Github Actions 类似 Gitlab 的 CI/CD 功能，可以帮助我们自动构建、测试和部署项目。而且很多具体的 Action 都有专门的 Github 项目维护，我们
+的配置页来自于 Hugo 的 [技术文档](https://gohugo.io/hosting-and-deployment/hosting-on-github/) 。
 
-### 2.1 仓库名称：username.github.io
-### 2.2 配置action部署
-
-## 3. 添加 action 文件
-```bash
-cd ydgo.github.io
-mkdir -p .github/workflows
-vim hugo.yaml
-```
-hugo.yaml
+现在项目根目录创建如下目录：`.github/workflows`，再在此目录下创建任意名称，yaml 格式的配置文件。Github 会自动识别并根据此目录下的配置文件
+执行设定的 Action 。
 ```yaml
 # Sample workflow for building and deploying a Hugo site to GitHub Pages
 name: Deploy Hugo site to Pages
@@ -174,8 +177,18 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-
 ```
 
-## 4. 更新代码即部署
-blog 地址： https://ydgo.github.io/
+### 4. 将博客与远程仓库建立连接
+```bash
+git remote add origin git@github.com:username.github.io.git
+```
+
+### 5. 写博客，上传即自动部署
+```bash
+hugo new posts/xxx.md
+git add .
+git commit -m 'init my blog'
+git push
+```
+最后访问`username.github.io`即可。
