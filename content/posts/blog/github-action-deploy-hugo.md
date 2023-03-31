@@ -10,8 +10,9 @@ tags: [Hugo]
 
 <!--more-->
 
-## 1. 在 Github 上创建项目
-项目名称符合规范：`username.github.io`
+## 1. 创建 Github 项目
+1. 项目名称符合规范：`username.github.io`
+2. 配置好仓库的配置页面的 Pages 配置参数
 
 ## 2. 使用 Hugo 在本地创建博客
 在 [Hugo](https://github.com/gohugoio/hugo/releases/tag/v0.111.3) 官网下载最新的版本（选扩展版本）
@@ -19,7 +20,7 @@ tags: [Hugo]
 ### 2.1 创建项目
 注意项目名称最好和仓库名一致。
 
-{{<admonition>}} username 请换成自己的 GitHub 用户名。{{</admonition>}}
+{{< admonition tip >}} username 请换成自己的 GitHub 用户名。{{< /admonition >}}
 ```bash
 hugo new site username.github.io
 ```
