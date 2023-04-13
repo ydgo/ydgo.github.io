@@ -9,6 +9,9 @@ tags: [Go,Sql]
 本文记录了在 Go 语言中实现数据库 API 的包`database/sql`的源码分析。
 <!--more-->
 
+<embed id="pdfPlayer" src="go-sql.md" type="application/pdf" width="100%" height="600" >
+
+
 [类图生成工具](https://github.com/jfeliu007/goplantuml)
 
 [类图在线生成平台](https://www.dumels.com/)
