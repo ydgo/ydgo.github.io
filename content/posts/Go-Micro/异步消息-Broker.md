@@ -76,6 +76,8 @@ Go Micro 对 Broker 的默认实现是 [Http](https://github.com/go-micro/go-mic
 
 为了更好地了解其实现原理，我便照着插件自己写了一下对 redis 的简单实现。
 
+其中使用的 redis 的库为 [go-redis](github.com/go-redis/redis)，使用了其提供的消息发布订阅的功能。
+
 ### 3.1 Broker定义
 ```go
 package broker
