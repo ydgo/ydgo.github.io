@@ -7,9 +7,11 @@ tags: [Go,Gin]
 ---
 本文介绍了 Gin 框架中关于数据绑定的基础知识。
 
+所有特性请参考[官方文档](https://gin-gonic.com/zh-cn/docs/)
+
 <!--more-->
 
-## 1. 什么是 Gin Binding
+## 1. 什么是 Gin 数据绑定
 
 Gin 绑定用于将 JSON、XML、路径参数、表单数据等序列化为结构体，并自带了验证功能。
 
@@ -89,14 +91,14 @@ func Default(method, contentType string) Binding {
 
 ## 3. 几种绑定的区别
 
-Gin提供了两类绑定方法：
-- Type - Must bind
+> Gin提供了两类绑定方法：
+> - Type - Must bind
+>  - Methods - Bind, BindJSON, BindXML, BindQuery, BindYAML
+>  - Behavior - 这些方法属于 MustBindWith 的具体调用。 如果发生绑定错误，则请求终止，并触发 c.AbortWithError(400, err).SetType(ErrorTypeBind)。响应状态码被设置为 400 并且 Content-Type 被设置为 text/plain; charset=utf-8。 如果您在此之后尝试设置响应状态码，Gin会输出日志 [GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 422。 如果您希望更好地控制绑定，考虑使用 ShouldBind 等效方法。
+> - Type - Should bind
+>  - Methods - ShouldBind, ShouldBindJSON, ShouldBindXML, ShouldBindQuery, ShouldBindYAML
+>  - Behavior - 这些方法属于 ShouldBindWith 的具体调用。 如果发生绑定错误，Gin 会返回错误并由开发者处理错误和请求。
 
-   - Methods - Bind, BindJSON, BindXML, BindQuery, BindYAML
-   - Behavior - 这些方法属于 MustBindWith 的具体调用。 如果发生绑定错误，则请求终止，并触发 c.AbortWithError(400, err).SetType(ErrorTypeBind)。响应状态码被设置为 400 并且 Content-Type 被设置为 text/plain; charset=utf-8。 如果您在此之后尝试设置响应状态码，Gin会输出日志 [GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 422。 如果您希望更好地控制绑定，考虑使用 ShouldBind 等效方法。
-- Type - Should bind
-    - Methods - ShouldBind, ShouldBindJSON, ShouldBindXML, ShouldBindQuery, ShouldBindYAML
-    - Behavior - 这些方法属于 ShouldBindWith 的具体调用。 如果发生绑定错误，Gin 会返回错误并由开发者处理错误和请求。
 
 先看下是怎么使用的吧。
 
@@ -595,3 +597,5 @@ curl http://127.0.0.1:8080/?name=123
 参考
 
 https://blog.logrocket.com/gin-binding-in-go-a-tutorial-with-examples/
+
+https://gin-gonic.com/zh-cn/docs/examples/binding-and-validation/
