@@ -1,5 +1,5 @@
 ---
-title: "Bind"
+title: "Gin-数据绑定和验证"
 date: 2023-04-25T16:39:06+08:00
 draft: false
 categories: ["Gin"]
@@ -93,11 +93,11 @@ func Default(method, contentType string) Binding {
 
 > Gin提供了两类绑定方法：
 > - Type - Must bind
->  - Methods - Bind, BindJSON, BindXML, BindQuery, BindYAML
->  - Behavior - 这些方法属于 MustBindWith 的具体调用。 如果发生绑定错误，则请求终止，并触发 c.AbortWithError(400, err).SetType(ErrorTypeBind)。响应状态码被设置为 400 并且 Content-Type 被设置为 text/plain; charset=utf-8。 如果您在此之后尝试设置响应状态码，Gin会输出日志 [GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 422。 如果您希望更好地控制绑定，考虑使用 ShouldBind 等效方法。
+>   - Methods - Bind, BindJSON, BindXML, BindQuery, BindYAML
+>   - Behavior - 这些方法属于 MustBindWith 的具体调用。 如果发生绑定错误，则请求终止，并触发 c.AbortWithError(400, err).SetType(ErrorTypeBind)。响应状态码被设置为 400 并且 Content-Type 被设置为 text/plain; charset=utf-8。 如果您在此之后尝试设置响应状态码，Gin会输出日志 [GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 422。 如果您希望更好地控制绑定，考虑使用 ShouldBind 等效方法。
 > - Type - Should bind
->  - Methods - ShouldBind, ShouldBindJSON, ShouldBindXML, ShouldBindQuery, ShouldBindYAML
->  - Behavior - 这些方法属于 ShouldBindWith 的具体调用。 如果发生绑定错误，Gin 会返回错误并由开发者处理错误和请求。
+>   - Methods - ShouldBind, ShouldBindJSON, ShouldBindXML, ShouldBindQuery, ShouldBindYAML
+>   - Behavior - 这些方法属于 ShouldBindWith 的具体调用。 如果发生绑定错误，Gin 会返回错误并由开发者处理错误和请求。
 
 
 先看下是怎么使用的吧。
