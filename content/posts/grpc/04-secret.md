@@ -50,19 +50,19 @@ s.Serve(lis)
 
 首先在项目目录下新建 x509 目录，在此目录下执行以下命令生成证书相关文件。
 
->** CA 证书**
+> **CA 证书**
 
 ```shell
 # 生成key 私钥文件
 openssl genrsa -out ca.key 2048
 
 # 生成.csr 证书签名请求文件
-openssl req -new -key ca.key -out ca.csr -subj "/C=CN/L=China/O=yd/CN=www.yudong.com"
+openssl req -new -key ca.key -out ca.csr -subj "/C=CN/L=China/O=yy/CN=www.yy.com"
 
 # 自签名生成.crt 证书文件
-openssl req -new -x509 -days 3650 -key ca.key -out ca.crt -subj "/C=CN/L=China/O=yd/CN=www.yudong.com"
+openssl req -new -x509 -days 3650 -key ca.key -out ca.crt -subj "/C=CN/L=China/O=yy/CN=www.yy.com"
 
-# 最后一条将会输出： subject=C = CN, ST = Guangzhou, L = Guangzhou, O = yudong, OU = yudong, CN = www.yudong.com
+# 最后一条将会输出： subject=C = CN, ST = Guangzhou, L = Guangzhou, O = yy, OU = yy, CN = www.yy.com
 
 ```
 
@@ -73,10 +73,10 @@ openssl req -new -x509 -days 3650 -key ca.key -out ca.crt -subj "/C=CN/L=China/O
 openssl genrsa -out server.key 2048
 
 # 生成.csr 证书签名请求文件
-openssl req -new -key server.key -out server.csr -reqexts SAN -config <(cat /etc/ssl/openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:*.yudong.com,DNS:*.refersmoon.com" -subj "/C=CN/L=China/O=yd/CN=www.yudong.com"
+openssl req -new -key server.key -out server.csr -reqexts SAN -config <(cat /etc/ssl/openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:*.yy.com,DNS:*.refersmoon.com" -subj "/C=CN/L=China/O=yd/CN=www.yy.com"
 
 # 签名生成.crt 证书文件
-openssl x509 -req -days 3650 -in server.csr -out server.crt -CA ca.crt -CAkey ca.key -CAcreateserial -extensions SAN -extfile  <(cat /etc/ssl/openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:*.yudong.com,DNS:*.refersmoon.com"))
+openssl x509 -req -days 3650 -in server.csr -out server.crt -CA ca.crt -CAkey ca.key -CAcreateserial -extensions SAN -extfile  <(cat /etc/ssl/openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:*.yy.com,DNS:*.refersmoon.com"))
 
 
 ```
@@ -87,7 +87,6 @@ openssl x509 -req -days 3650 -in server.csr -out server.crt -CA ca.crt -CAkey ca
 ├── ca.crt
 ├── ca.csr
 ├── ca.key
-├── ca.srl
 ├── server.crt
 ├── server.csr
 └── server.key
@@ -95,9 +94,9 @@ openssl x509 -req -days 3650 -in server.csr -out server.crt -CA ca.crt -CAkey ca
 
 会用到的有下面这3个：
 
-1）ca.crt
-2）server.key
-3）server.crt
+1. ca.crt
+2. server.key
+3. server.crt
 
 ### 3.2 服务端代码
 ```go
@@ -124,7 +123,7 @@ func main() {
 ### 3.3 客户端代码
 ```go
 func main() {
-	creds, err := credentials.NewClientTLSFromFile("../x509/ca.crt", "www.yudong.com")
+	creds, err := credentials.NewClientTLSFromFile("../x509/ca.crt", "www.yy.com")
 	if err != nil {
 		log.Fatalln("client failed to load credentials: ", err.Error())
 	}
