@@ -1,5 +1,5 @@
 ---
-title: "01 ProtoBuf"
+title: "gRPC(Go)-2-ProtoBuf"
 date: 2023-04-27T11:49:36+08:00
 draft: false
 categories: ["gRPC"]
