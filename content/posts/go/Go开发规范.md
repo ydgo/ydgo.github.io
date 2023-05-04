@@ -8,6 +8,34 @@ tags: [Go,开发规范]
 Go 语言开发过程中需要注意的开发规范。
 <!--more-->
 
+for 循环 + switch break
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+loop:
+	for n := 0; n < 10; n++ {
+		switch n {
+		case 5:
+			break loop
+		case 3, 2:
+			break
+		default:
+			fmt.Println("n: ", n)
+		}
+	}
+}
+
+/* output
+n:  0
+n:  1
+n:  4
+*/
+```
+
 [Effective Go](https://go.dev/doc/effective_go)
 
 [Uber Go 语言编码规范](https://github.com/xxjwxc/uber_go_guide_cn)
@@ -25,3 +53,4 @@ Go 语言开发过程中需要注意的开发规范。
 [golangci-lint](https://github.com/golangci/golangci-lint)
 
 [实用的 Go 集合](https://dave.cheney.net/practical-go)
+
