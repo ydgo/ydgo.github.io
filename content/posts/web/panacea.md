@@ -8,9 +8,11 @@ tags: [Web,斗气大陆]
 在 Web 开发中，我们需要一些灵丹妙药来提升我们的实力，突破自身桎梏。
 <!--more-->
 
+天下丹药，可分九品
+
 ## 五品丹药
 
-### Open API 规范
+### OpenAPI 规范
 
 [API 规范](https://openapi.apifox.cn/)
 
