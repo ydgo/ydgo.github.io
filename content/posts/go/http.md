@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 )
 
 func Pong(w http.ResponseWriter, r *http.Request) {
@@ -29,6 +30,7 @@ type Index struct {
 }
 
 func (i *Index) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	time.Sleep(time.Second * 10)
 	_, _ = fmt.Fprintln(w, "hello world")
 }
 
@@ -37,8 +39,8 @@ func main() {
 	mux.HandleFunc("/ping", Pong)
 	mux.HandleFunc("/not_found1", http.NotFound)
 	mux.Handle("/not_found2", http.NotFoundHandler())
-	mux.Handle("/", &Index{})
-	mux.Handle("/books", http.RedirectHandler("/ping", http.StatusFound))
+	mux.Handle("/", http.TimeoutHandler(&Index{}, time.Second*9, "timeout"))    // 处理超时的handler
+	mux.Handle("/books", http.RedirectHandler("/ping", http.StatusFound))   // 处理重定向的handler
 	log.Fatal(http.ListenAndServe(":8080", mux))
 
 }
@@ -58,7 +60,7 @@ $ curl http://127.0.0.1:8080/not_found2
 404 page not found
 
 $ curl http://127.0.0.1:8080/
-hello world
+timeout
 
 $ curl http://127.0.0.1:8080/books
 <a href="/ping">Found</a>.
@@ -103,11 +105,17 @@ func NotFoundHandler() Handler { return HandlerFunc(NotFound) }
 
 理解如下：
 
-1. `Handler`是一个接口类型，有一个方法用来处理请求
-2. `HandlerFunc`是一个函数类型，且实现了`Handler`接口，所以我们可以把一个满足方法签名的普通函数转换为一个`Handler`
-3. `NotFound`是一个满足`Handler`接口下方法的签名的普通函数
-4. 所以我们可以通过`HandlerFunc(NotFound)`将 NotFound 转化为一个 Handler，`NotFoundHandler()`方法其实就是这样做的
+1. `Handler`是一个接口类型，有一个方法用来处理请求。
+2. `HandlerFunc`是一个函数类型，且实现了`Handler`接口，所以我们可以把一个满足方法签名的普通函数转换为一个`Handler`。
+3. `NotFound`是一个满足`Handler`接口下方法的签名的普通函数。
+4. 所以我们可以通过`HandlerFunc(NotFound)`将 NotFound 转化为一个 Handler，`NotFoundHandler()`方法其实就是这样做的。
 
 ## 结论
 1. `mux.HandlerFunc()`其实就是一种便捷方式，可以让我们通过一个函数去处理请求。
 2. `mux.Handle()`可以让我们使用任意自定义对象去处理一个请求，前提是这个对象实现了`Handler`接口。
+3. 在具体的项目中，我们可能更倾向使用自定义对象去处理请求。
+
+## 备注
+另外说几点：
+
+1. `http.ServeMux`是一个请求多路复用器，就是一个能管理多个请求路径的处理器，也实现了`Handler`接口
