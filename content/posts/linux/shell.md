@@ -73,3 +73,75 @@ do
 	echo "File Name Is: $FILE"
 done
 ```
+
+### Case
+
+直接看文档
+
+### While
+
+直接看文档
+
+
+### 命令行参数
+
+```shell
+$ ./script.sh param1 param2 param3 param4
+```
+
+```text
+$0 -- "script.sh"
+$1 -- "param1"
+$2 -- "param2"
+$3 -- "param3"
+$4 -- "param4"
+$@ -- array of all positional parameters
+```
+
+### 退出代码
+
+- 0 means success
+- Any code other than 0 means an error condition.
+
+`$?`表示先前执行的命令的返回代码
+
+```shell
+#!/bin/bash
+HOST="google.com"
+ping -c 1 $HOST     # -c is used for count, it will send the request, number of times mentioned
+RETURN_CODE=$?
+if [ "$RETURN_CODE" -eq "0" ]
+then
+  echo "$HOST reachable"
+else
+  echo "$HOST unreachable"
+fi
+```
+
+### 逻辑运算符
+
+- `&&`
+- `||`
+
+```shell
+mkdir tempDir && cd tempDir && mkdir subTempDir
+```
+
+### 函数
+
+```shell
+#!/bin/bash
+function myFunc () {
+    echo "Shell Scripting Is Fun!"
+}
+myFunc
+```
+
+### 通配符
+
+转义字符：`\`
+
+- `*`
+- `?`：匹配一个字符
+- `[]`
+- `[!]`
