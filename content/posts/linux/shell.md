@@ -145,3 +145,7 @@ myFunc
 - `?`：匹配一个字符
 - `[]`
 - `[!]`
+
+## 参考
+
+https://www.shellscript.sh/
