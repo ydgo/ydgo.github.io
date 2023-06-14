@@ -148,4 +148,4 @@ myFunc
 
 ## 参考
 
-https://www.shellscript.sh/
+https://wangdoc.com/bash/intro
