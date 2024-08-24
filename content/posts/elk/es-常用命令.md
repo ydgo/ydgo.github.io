@@ -8,7 +8,7 @@ tags: [ES]
 记录 ES 使用中常见的 API。
 <!--more-->
 
-# 运维
+## 1. 运维
 
 ~~~text
 # 查看 index 的配置
@@ -21,7 +21,7 @@ GET /_nodes/thread_pool
 GET /_cat/thread_pool?v
 ~~~
 
-# 测试
+## 2. 测试
 
 ~~~text
 # 创建索引
